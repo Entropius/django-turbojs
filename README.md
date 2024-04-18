@@ -1,19 +1,11 @@
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fhotwire-django%2Fturbo-django%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/hotwire-django/turbo-django/goto?ref=main)
-[![Documentation Status](https://readthedocs.org/projects/turbo-django/badge/?version=latest)](https://turbo-django.readthedocs.io/en/latest/?badge=latest)
-[![Issues](https://img.shields.io/github/issues/hotwire-django/turbo-django)](https://img.shields.io/github/issues/hotwire-django/turbo-django)
-[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FDjangoHotwire)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fhotwire-django%2Fturbo-django)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fhotwire-django%2Fdjango-turbojs%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/hotwire-django/django-turbojs/goto?ref=main)
+[![Documentation Status](https://readthedocs.org/projects/django-turbojs/badge/?version=latest)](https://django-turbojs.readthedocs.io/en/latest/?badge=latest)
+[![Issues](https://img.shields.io/github/issues/hotwire-django/django-turbojs)](https://img.shields.io/github/issues/hotwire-django/django-turbojs)
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FDjangoHotwire)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fhotwire-django%2Fdjango-turbojs)
 
-# Unmaintained // Turbo for Django
+# Hotwired Turbo for Django
 
-> [!WARNING]  
-> This library is unmaintained. Integrating Hotwire and Django is so easy
-> that you are probably better served by writing a little bit of Python in your code
-> than using a full-blown library that adds another level of abstraction.
-> It also seems that the Django community is leaning more towards HTMX than Hotwire
-> so you might want to look over there if you want more "support"
-> (but we still think that Hotwire is very well suited to be used with Django)
-
-Integrate [Hotwire Turbo](https://turbo.hotwired.dev/) with Django with ease.
+Integrate [Hotwire Turbo](https://turbo.hotwired.dev/) with Django with ease. This project is fork of [turbo-django](https://github.com/hotwire-django/turbo-django)
 
 
 ## Requirements
@@ -26,7 +18,7 @@ Integrate [Hotwire Turbo](https://turbo.hotwired.dev/) with Django with ease.
 
 Turbo Django is available on PyPI - to install it, just run:
 
-    pip install turbo-django
+    pip install django-turbojs
 
 Add `turbo` and `channels` to `INSTALLED_APPS`, and copy the following `CHANNEL_LAYERS` setting:
 
@@ -127,10 +119,10 @@ With the `quickstart/` path open in a browser window, watch as the broadcast pus
 
 Now change `.update()` to `.append()` and resend the broadcast a few times.  Notice you do not have to reload the page to get this modified behavior.
 
-Excited to learn more?  Be sure to walk through the [tutorial](https://turbo-django.readthedocs.io/en/latest/index.html) and read more about what Turbo can do for you.
+Excited to learn more?  Be sure to walk through the [tutorial](https://django-turbojs.readthedocs.io/en/latest/index.html) and read more about what Turbo can do for you.
 
 ## Documentation
-Read the [full documentation](https://turbo-django.readthedocs.io/en/latest/index.html) at readthedocs.io.
+Read the [full documentation](https://django-turbojs.readthedocs.io/en/latest/index.html) at readthedocs.io.
 
 
 ## Contribute
@@ -142,6 +134,6 @@ As this new magic is discovered, you can expect to see a few repositories with e
 
 ## License
 
-Turbo-Django is released under the [MIT License](https://opensource.org/licenses/MIT) to keep compatibility with the Hotwire project.
+django-turbojs is released under the [MIT License](https://opensource.org/licenses/MIT) to keep compatibility with the Hotwire project.
 
 If you submit a pull request. Remember to add yourself to `CONTRIBUTORS.md`!
