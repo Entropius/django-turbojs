@@ -172,37 +172,37 @@ class Stream(metaclass=DeclarativeFieldsMetaclass):
     async def aappend(self, template=None, context=None, text=None, selector=None, id=None):
         """Shortcut to stream an append frame"""
 
-        frame = self._aget_frame(template, context, text)
+        frame = await self._aget_frame(template, context, text)
         frame.append(selector=selector, id=id)
         await self.astream(frame)
 
     async def aprepend(self, template=None, context=None, text=None, selector=None, id=None):
         """Shortcut to stream an append frame"""
-        frame = self._aget_frame(template, context, text)
+        frame = await self._aget_frame(template, context, text)
         frame.prepend(selector=selector, id=id)
         await self.astream(frame)
 
     async def areplace(self, template=None, context=None, text=None, selector=None, id=None):
         """Shortcut to stream an append frame"""
-        frame = self._aget_frame(template, context, text)
+        frame = await self._aget_frame(template, context, text)
         frame.replace(selector=selector, id=id)
         await self.astream(frame)
 
     async def aupdate(self, template=None, context=None, text=None, selector=None, id=None):
         """Shortcut to stream an append frame"""
-        frame = self._aget_frame(template, context, text)
+        frame = await self._aget_frame(template, context, text)
         frame.update(selector=selector, id=id)
         await self.astream(frame)
 
     async def abefore(self, template=None, context=None, text=None, selector=None, id=None):
         """Shortcut to stream an append frame"""
-        frame = self._aget_frame(template, context, text)
+        frame = await self._aget_frame(template, context, text)
         frame.before(selector=selector, id=id)
         await self.astream(frame)
 
     async def aafter(self, template=None, context=None, text=None, selector=None, id=None):
         """Shortcut to stream an append frame"""
-        frame = self._aget_frame(template, context, text)
+        frame = await self._aget_frame(template, context, text)
         frame.after(selector=selector, id=id)
         await self.astream(frame)
 
