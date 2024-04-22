@@ -163,40 +163,46 @@ class Stream(metaclass=DeclarativeFieldsMetaclass):
             raise ValueError("No action (append, update, remove...) assigned to Turbo Frame.")
         self.stream_raw(frame.rendered_template)
 
+    async def _aget_frame(self, template=None, context=None, text=None):
+        if text:
+            return TurboRender(text)
+        else:
+            return await sync_to_async(TurboRender.init_from_template)(template, context)
+
     async def aappend(self, template=None, context=None, text=None, selector=None, id=None):
         """Shortcut to stream an append frame"""
 
-        frame = self._get_frame(template, context, text)
+        frame = self._aget_frame(template, context, text)
         frame.append(selector=selector, id=id)
         await self.astream(frame)
 
     async def aprepend(self, template=None, context=None, text=None, selector=None, id=None):
         """Shortcut to stream an append frame"""
-        frame = self._get_frame(template, context, text)
+        frame = self._aget_frame(template, context, text)
         frame.prepend(selector=selector, id=id)
         await self.astream(frame)
 
     async def areplace(self, template=None, context=None, text=None, selector=None, id=None):
         """Shortcut to stream an append frame"""
-        frame = self._get_frame(template, context, text)
+        frame = self._aget_frame(template, context, text)
         frame.replace(selector=selector, id=id)
         await self.astream(frame)
 
     async def aupdate(self, template=None, context=None, text=None, selector=None, id=None):
         """Shortcut to stream an append frame"""
-        frame = self._get_frame(template, context, text)
+        frame = self._aget_frame(template, context, text)
         frame.update(selector=selector, id=id)
         await self.astream(frame)
 
     async def abefore(self, template=None, context=None, text=None, selector=None, id=None):
         """Shortcut to stream an append frame"""
-        frame = self._get_frame(template, context, text)
+        frame = self._aget_frame(template, context, text)
         frame.before(selector=selector, id=id)
         await self.astream(frame)
 
     async def aafter(self, template=None, context=None, text=None, selector=None, id=None):
         """Shortcut to stream an append frame"""
-        frame = self._get_frame(template, context, text)
+        frame = self._aget_frame(template, context, text)
         frame.after(selector=selector, id=id)
         await self.astream(frame)
 
