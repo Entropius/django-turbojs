@@ -163,6 +163,68 @@ class Stream(metaclass=DeclarativeFieldsMetaclass):
             raise ValueError("No action (append, update, remove...) assigned to Turbo Frame.")
         self.stream_raw(frame.rendered_template)
 
+    async def aappend(self, template=None, context=None, text=None, selector=None, id=None):
+        """Shortcut to stream an append frame"""
+
+        frame = self._get_frame(template, context, text)
+        frame.append(selector=selector, id=id)
+        await self.astream(frame)
+
+    async def aprepend(self, template=None, context=None, text=None, selector=None, id=None):
+        """Shortcut to stream an append frame"""
+        frame = self._get_frame(template, context, text)
+        frame.prepend(selector=selector, id=id)
+        await self.astream(frame)
+
+    async def areplace(self, template=None, context=None, text=None, selector=None, id=None):
+        """Shortcut to stream an append frame"""
+        frame = self._get_frame(template, context, text)
+        frame.replace(selector=selector, id=id)
+        await self.astream(frame)
+
+    async def aupdate(self, template=None, context=None, text=None, selector=None, id=None):
+        """Shortcut to stream an append frame"""
+        frame = self._get_frame(template, context, text)
+        frame.update(selector=selector, id=id)
+        await self.astream(frame)
+
+    async def abefore(self, template=None, context=None, text=None, selector=None, id=None):
+        """Shortcut to stream an append frame"""
+        frame = self._get_frame(template, context, text)
+        frame.before(selector=selector, id=id)
+        await self.astream(frame)
+
+    async def aafter(self, template=None, context=None, text=None, selector=None, id=None):
+        """Shortcut to stream an append frame"""
+        frame = self._get_frame(template, context, text)
+        frame.after(selector=selector, id=id)
+        await self.astream(frame)
+
+    async def aremove(self, selector=None, id=None):
+        """
+        Send a broadcast to remove an element from a turbo frame.
+        """
+        # Remove does not require a template so allow it to pass through without a render().
+        remove_frame = TurboRender().remove(selector, id)
+        await self.astream(remove_frame)
+
+    async def astream_raw(self, raw_text: str):
+        channel_layer = get_channel_layer()
+
+        await channel_layer.group_send(
+            self.broadcastable_stream_name,
+            {
+                "type": "notify",
+                "signed_channel_name": self.signed_stream_name,
+                "rendered_template": raw_text,
+            },
+        )
+
+    async def astream(self, frame: "TurboRender"):
+        if not frame.rendered_template:
+            raise ValueError("No action (append, update, remove...) assigned to Turbo Frame.")
+        await self.astream_raw(frame.rendered_template)
+
     def user_passes_test(self, user) -> bool:
         return True
 
@@ -299,7 +361,7 @@ class TurboRender:
 
 class TurboResponse(HttpResponse):
     """
-    An Trubo response class with TurboRendered frames as content"""
+    A Turbo response class with TurboRendered frames as content"""
 
     def __init__(self, *frames, **kwargs):
 
