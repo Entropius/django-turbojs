@@ -31,38 +31,47 @@ Example
 
 
 .. method:: append(template=None, context=None, text=None, selector=None, id=None)
+.. method:: aappend(template=None, context=None, text=None, selector=None, id=None)
 
     Add the rendered template to the end of the specified HTML element.
 
 .. method:: prepend(template=None, context=None, text=None, selector=None, id=None)
+.. method:: aprepend(template=None, context=None, text=None, selector=None, id=None)
 
     Add the rendered template to the beginning of the specified HTML element.
 
 .. method:: replace(template=None, context=None, text=None, selector=None, id=None)
+.. method:: areplace(template=None, context=None, text=None, selector=None, id=None)
 
     Remove and replace the specified HTML element with the rendered template.
 
 .. method:: update(template=None, context=None, text=None, selector=None, id=None)
+.. method:: aupdate(template=None, context=None, text=None, selector=None, id=None)
 
     Replace the contents inside the specified HTML element with the rendered template.
 
 .. method:: before(template=None, context=None, text=None, selector=None, id=None)
+.. method:: abefore(template=None, context=None, text=None, selector=None, id=None)
 
     Insert the rendered template before the specified HTML element.
 
 .. method:: after(template=None, context=None, text=None, selector=None, id=None)
+.. method:: aafter(template=None, context=None, text=None, selector=None, id=None)
 
     Insert the template after the specified HTML element.
 
 .. method:: remove(selector=None, id=None)
+.. method:: aremove(selector=None, id=None)
 
     Remove the given HTML element.  The rendered template will not be used.  As no template is used to remove divs, this can also be called directly from the shortcut ``remove_frame()``.  Ex: ``remove_frame(id='div_to_remove')``
 
 .. method:: stream(frame: "TurboRender")
+.. method:: astream(frame: "TurboRender")
 
     Send a :doc:`TurboRender </topics/turbo>` object to this stream.
 
 .. method:: stream_raw(raw_text: str)
+.. method:: astream_raw(raw_text: str)
 
     Send raw text to this stream.  This will not be prewrapped in a turbo stream tag as it would be in `stream()`
 
